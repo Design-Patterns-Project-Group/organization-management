@@ -1,10 +1,13 @@
 from .AbstractView import AbstractView
+from .Controller import Controller
 class View(AbstractView):
-    def __init__(self, productRepo, controller):
+    def __init__(self, productRepo):
         self.productRepo = productRepo
-        self.controller = controller
+        self.controller = Controller(self.productRepo, self)
+        self.initialise()
     def initialise(self):
-        pass
+        print("\nList of products\n")
+        self.controller.loadProducts()
     def showProducts(self, products):
-        pass
-    
+        for product in products:
+            print('\n',product.name,'\n')

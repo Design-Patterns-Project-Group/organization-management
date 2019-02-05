@@ -1,7 +1,9 @@
-from ProductRepo import ProductRepo
-from Product import Product
+from .ProductRepo import ProductRepo
+from .Product import Product
 class InMemoryProductRepo(ProductRepo):
     products = []
+    def __init__(self):
+        pass
     def getProductById(self, id):
         for product in InMemoryProductRepo.products:
             if product.id == id:

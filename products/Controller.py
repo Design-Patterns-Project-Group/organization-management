@@ -1,6 +1,8 @@
 from .AbstractController import AbstractController
 class Controller(AbstractController):
-    def __init__(self, productRepo):
+    def __init__(self, productRepo, view):
         self.productRepo = productRepo
+        self.view = view
     def loadProducts(self):
-        return self.productRepo.getProducts()
+        result = self.productRepo.getProducts()
+        self.view.showProducts(result)
